@@ -17,14 +17,20 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
 
-public class Gmaps extends MapActivity{
-	public Gmaps() {
+public class Gmaps extends MapActivity{	 
 	 
 	 @Override
-	 protected boolean isRouteDisplayed() {
-	     return false;
-	 }
-		// TODO Auto-generated constructor stub
+	 public void onCreate(final Bundle savedInstanceState) {
+	     super.onCreate(savedInstanceState);
+	     setContentView(R.layout.activity_main);
+	     final MapView mapView = (MapView) findViewById(R.id.mapview);
+	     mapView.setBuiltInZoomControls(true);
+	 }	;
+
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
