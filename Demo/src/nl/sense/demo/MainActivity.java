@@ -200,9 +200,7 @@ public class MainActivity extends Activity {
 			service.setPrefBool(Location.NETWORK, true);
 			service.setPrefBool(Location.AUTO_GPS, true); 
 			 
-			
-			service.setPrefBool(LOCATION_SERVICE, true);			
-			
+					
 			//set how often to sample
 			service.setPrefString(SensePrefs.Main.SAMPLE_RATE, "0");
 			
