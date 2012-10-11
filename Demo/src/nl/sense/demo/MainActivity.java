@@ -184,7 +184,7 @@ public class MainActivity extends Activity {
 	private void setupSense() {
 		Log.v(TAG, "setupSense()");
 		try {
-			service.changeLogin("foo", SenseApi.hashPassword("bar"), callback);
+			service.changeLogin("irgbit", SenseApi.hashPassword("soundcrowd"), callback);
 
 			//turn off specific sensors
 			service.setPrefBool(Ambience.LIGHT, false);
@@ -194,6 +194,8 @@ public class MainActivity extends Activity {
 			service.setPrefBool(Ambience.MIC, true);
 			//NOTE: spectrum might be too heavy for the phone or consume too much energy
 			service.setPrefBool(Ambience.AUDIO_SPECTRUM, true);
+			//location
+			service.setPrefBool(LOCATION_SERVICE, true);
 			
 			//set how often to sample
 			service.setPrefString(SensePrefs.Main.SAMPLE_RATE, "0");
