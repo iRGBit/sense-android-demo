@@ -7,10 +7,12 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
-import org.osmdroid.views.overlay.MyLocationOverlay;
+//import org.osmdroid.views.overlay.MyLocationOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.ScaleBarOverlay;
 import org.osmdroid.views.overlay.ItemizedIconOverlay.OnItemGestureListener;
+
+import nl.sense.demo.R;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -20,9 +22,7 @@ public class MapActivity extends Activity {
 	
 	private MapView myOpenMapView;
 	private MapController myOpenMapController;
-	
-	ArrayList<OverlayItem> anotherOverlayItemArray;
-		    
+			    
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_layout);
@@ -37,7 +37,18 @@ public class MapActivity extends Activity {
         
         GeoPoint gPt = new GeoPoint(51921700, 4481100);
         myOpenMapController.setCenter(gPt);
-        
-    } 
+  
+       
+    	
+    } //end onCreate
+            	
+    	
+    	
+
+
     
-}
+
+    
+    
+    }//end class Activity 
+    
