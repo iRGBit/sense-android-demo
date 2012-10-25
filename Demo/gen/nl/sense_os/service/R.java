@@ -41,8 +41,8 @@ public final class R {
         public static final int label=0x7f080002;
         public static final int linearLayout1=0x7f080009;
         public static final int linearLayout2=0x7f08000b;
+        public static final int mapview=0x7f080000;
         public static final int menu_settings=0x7f08000d;
-        public static final int openmapview=0x7f080000;
         public static final int relLayout1=0x7f080008;
         public static final int row=0x7f080001;
         public static final int sclogoSplash=0x7f08000a;
