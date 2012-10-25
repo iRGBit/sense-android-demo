@@ -1,31 +1,43 @@
 package nl.sense.demo;
 
+import java.util.ArrayList;
+
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.MyLocationOverlay;
+import org.osmdroid.views.overlay.OverlayItem;
+import org.osmdroid.views.overlay.ScaleBarOverlay;
+import org.osmdroid.views.overlay.ItemizedIconOverlay.OnItemGestureListener;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Toast;
  
 public class MapActivity extends Activity {
 	
-	private MapController mapController;
-	private MapView mapView;
-	    
+	private MapView myOpenMapView;
+	private MapController myOpenMapController;
+	
+	ArrayList<OverlayItem> anotherOverlayItemArray;
+		    
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_layout);
         
-        mapView = (MapView) findViewById(R.id.mapview);
-        mapView.setTileSource(TileSourceFactory.MAPNIK);
-        mapView.setBuiltInZoomControls(true);
-        mapController = mapView.getController();
-        mapController.setZoom(15);
-        GeoPoint point2 = new GeoPoint(51496994, -134733);
-        mapController.setCenter(point2);
-    }
-    protected boolean isRouteDisplayed() {
-        // TODO Auto-generated method stub
-        return false;
-    }
+        myOpenMapView = (MapView)findViewById(R.id.mapview);
+        myOpenMapView.setBuiltInZoomControls(true);
+        myOpenMapController = myOpenMapView.getController();
+        
+        myOpenMapView.setTileSource(TileSourceFactory.MAPNIK);
+        myOpenMapView.setMultiTouchControls(true);
+        myOpenMapController.setZoom(12);
+        
+        GeoPoint gPt = new GeoPoint(51921700, 4481100);
+        myOpenMapController.setCenter(gPt);
+        
+    } 
+    
 }
