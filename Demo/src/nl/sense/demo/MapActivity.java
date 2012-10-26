@@ -1,54 +1,88 @@
 package nl.sense.demo;
 
-import java.util.ArrayList;
-
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.tileprovider.MapTileProviderBasic;
+import org.osmdroid.tileprovider.tilesource.ITileSource;
+import org.osmdroid.tileprovider.tilesource.XYTileSource;
+import org.osmdroid.tileprovider.util.CloudmadeUtil;
 import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
-//import org.osmdroid.views.overlay.MyLocationOverlay;
-import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.views.overlay.ScaleBarOverlay;
-import org.osmdroid.views.overlay.ItemizedIconOverlay.OnItemGestureListener;
-
-import nl.sense.demo.R;
+import org.osmdroid.views.overlay.TilesOverlay;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Toast;
- 
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+
+/**
+ *
+ * @author Alex van der Linden
+ *
+ */
 public class MapActivity extends Activity {
-	
-	private MapView myOpenMapView;
-	private MapController myOpenMapController;
-			    
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.map_layout);
-        
-        myOpenMapView = (MapView)findViewById(R.id.mapview);
-        myOpenMapView.setBuiltInZoomControls(true);
-        myOpenMapController = myOpenMapView.getController();
-        
-        myOpenMapView.setTileSource(TileSourceFactory.MAPNIK);
-        myOpenMapView.setMultiTouchControls(true);
-        myOpenMapController.setZoom(12);
-        
-        GeoPoint gPt = new GeoPoint(51921700, 4481100);
-        myOpenMapController.setCenter(gPt);
-  
+
+	// ===========================================================
+	// Constants
+	// ===========================================================
+
+	// ===========================================================
+	// Fields
+	// ===========================================================
+
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(final Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		// Setup base map
+		final RelativeLayout rl = new RelativeLayout(this);
+
+		CloudmadeUtil.retrieveCloudmadeKey(getApplicationContext());
+
+		final MapView osmv = new MapView(this, 256);
+		rl.addView(osmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.FILL_PARENT));
+		osmv.setBuiltInZoomControls(true);
+
+		// zoom to Rotterdam
+		osmv.getController().setZoom(10);
+		osmv.getController().setCenter(new GeoPoint(51921700, 4481100));
+
+		// Add tiles layer with custom tile source
+		final MapTileProviderBasic tileProvider = new MapTileProviderBasic(getApplicationContext());
+		final ITileSource tileSource = new XYTileSource("SoudnTiles", null, 10, 16, 256, ".png",
+				"http://a.tiles.mapbox.com/v3/merglind.SoudnTiles/");
+		tileProvider.setTileSource(tileSource);
+		final TilesOverlay tilesOverlay = new TilesOverlay(tileProvider, this.getBaseContext());
+		tilesOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
+		osmv.getOverlays().add(tilesOverlay);
+
+		this.setContentView(rl);
+	}
+
+	// ===========================================================
+	// Getter & Setter
+	// ===========================================================
+
+	// ===========================================================
+	// Methods from SuperClass/Interfaces
+	// ===========================================================
+
+	// ===========================================================
+	// Methods
+	// ===========================================================
+
+	// ===========================================================
+	// Inner and Anonymous Classes
+	// ===========================================================
+}
+
+    	
+
+
+    
+
        
-    	
-    } //end onCreate
-            	
-    	
-    	
-
-
-    
-
-    
-    
-    }//end class Activity 
-    
