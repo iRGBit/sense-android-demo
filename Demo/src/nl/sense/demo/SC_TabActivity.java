@@ -7,7 +7,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
- 
+import nl.sense.demo.R; 
+
 @SuppressWarnings("deprecation")
 public class SC_TabActivity extends TabActivity {
     /** Called when the activity is first created. */
@@ -15,8 +16,8 @@ public class SC_TabActivity extends TabActivity {
     public void onCreate(Bundle savedInstanceState) {
     	
 
-        Intent Sense = new Intent(getApplicationContext(), MainActivity.class);
-        startService(Sense);
+//        Intent Sense = new Intent(getApplicationContext(), MainActivity.class);
+//        startService(Sense);
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

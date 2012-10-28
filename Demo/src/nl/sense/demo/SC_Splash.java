@@ -39,7 +39,7 @@ public class SC_Splash extends Activity {
                 
                 // Run next activity
                 Intent intent = new Intent();
-                intent.setClass(sPlashScreen, MainActivity.class);
+                intent.setClass(sPlashScreen, SenseActivity.class);
                 startActivity(intent);
                 stop();                    
             }
