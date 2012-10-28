@@ -3,6 +3,8 @@ package nl.sense.demo;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
  
@@ -11,11 +13,15 @@ public class SC_TabActivity extends TabActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	
+
         Intent Sense = new Intent(getApplicationContext(), MainActivity.class);
         startService(Sense);
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+
  
         TabHost tabHost = getTabHost();
  
@@ -42,5 +48,10 @@ public class SC_TabActivity extends TabActivity {
         tabHost.addTab(sensespec); // Adding sense tab
         tabHost.addTab(mapspec); // Adding map tab
         tabHost.addTab(infospec); // Adding info tab
+    }
+    public final boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
 }
