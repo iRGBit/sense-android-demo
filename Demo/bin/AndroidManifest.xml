@@ -55,8 +55,8 @@
 
     <application
         android:icon="@drawable/soundcrowd_logo"
-        android:label="@string/app_name" >
-        
+        android:label="@string/app_name" 
+    	android:theme="@android:style/Theme.NoTitleBar" >        
      <!--    <uses-library android:name="com.google.android.maps"/> --> 
         
         

@@ -17,6 +17,8 @@ import org.osmdroid.views.overlay.TilesOverlay;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
@@ -95,6 +97,11 @@ public class MapActivity extends Activity {
 		this.setContentView(rl);
 	}
  	
+    public final boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }	
 
 }
 
