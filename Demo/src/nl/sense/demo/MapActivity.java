@@ -24,7 +24,7 @@ public class MapActivity extends Activity {
 	// ===========================================================
 	// Constants
 	// ===========================================================
-
+	
 	// ===========================================================
 	// Fields
 	// ===========================================================
@@ -46,6 +46,7 @@ public class MapActivity extends Activity {
 		rl.addView(osmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
 		osmv.setBuiltInZoomControls(true);
+		osmv.setMultiTouchControls(true);
 
 		// zoom to Rotterdam
 		osmv.getController().setZoom(10);
@@ -53,8 +54,10 @@ public class MapActivity extends Activity {
 
 		// Add tiles layer with custom tile source
 		final MapTileProviderBasic tileProvider = new MapTileProviderBasic(getApplicationContext());
-		final ITileSource tileSource = new XYTileSource("SoudnTiles", null, 10, 16, 256, ".png",
-				"http://a.tiles.mapbox.com/v3/merglind.SoudnTiles/");
+		final ITileSource tileSource = new XYTileSource("NoiseTiles2012", null, 1, 16, 256, ".png",
+				"http://a.tiles.mapbox.com/v3/merglind.NoiseTiles2012/");
+		
+		
 		tileProvider.setTileSource(tileSource);
 		final TilesOverlay tilesOverlay = new TilesOverlay(tileProvider, this.getBaseContext());
 		tilesOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
@@ -79,6 +82,7 @@ public class MapActivity extends Activity {
 	// Inner and Anonymous Classes
 	// ===========================================================
 }
+
 
     	
 
