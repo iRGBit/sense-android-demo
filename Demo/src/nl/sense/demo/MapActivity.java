@@ -53,7 +53,7 @@ public class MapActivity extends Activity {
 		final MapView osmv = new MapView(this, 256);
 		rl.addView(osmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
-		osmv.setBuiltInZoomControls(true);
+		//osmv.setBuiltInZoomControls(true);
 		osmv.setMultiTouchControls(true);
 		
 	    myLocationoverlay = new MyLocationOverlay(this, osmv);

@@ -30,7 +30,7 @@ public class SC_TabActivity extends TabActivity {
         TabSpec sensespec = tabHost.newTabSpec("Sense");
         // setting Title and Icon for the Tab
         sensespec.setIndicator("Sense", getResources().getDrawable(R.drawable.iconsensetab));
-        Intent senseIntent = new Intent(this, SenseActivity.class);
+        Intent senseIntent = new Intent(this, SC_GraphView.class);
         sensespec.setContent(senseIntent);
  
         // Tab for OSMap
