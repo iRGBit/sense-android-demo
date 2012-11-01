@@ -79,9 +79,11 @@
         <!--  Map Activity -->
         <activity android:name=".MapActivity" />
  
-        <!--  Photos Activity -->
+        <!--  Info Activity -->
         <activity android:name=".InfoActivity" />
         
+        <!--  Graph View Activity -->
+        <activity android:name=".SC_GraphView" />
         
         
         <!-- COMPONENTS OF GENERIC SENSE PLATFORM -->

@@ -54,6 +54,7 @@ public class MapActivity extends Activity {
 		rl.addView(osmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
 		//osmv.setBuiltInZoomControls(true);
+		//osmv.getController().setCenter(new GeoPoint(51921700, 4481100));	
 		osmv.setMultiTouchControls(true);
 		
 	    myLocationoverlay = new MyLocationOverlay(this, osmv);
@@ -63,14 +64,17 @@ public class MapActivity extends Activity {
 	    myLocationoverlay.setDrawAccuracyEnabled(true);
 	    myLocationoverlay.runOnFirstFix(new Runnable() {
 	    public void run() {
-			if (myLocationoverlay != null){	
+			if (myLocationoverlay.getMyLocation() != null){	
 				// zoom to Rotterdam
-				osmv.getController().setCenter(new GeoPoint(51921700, 4481100));	
+	            osmv.getController().animateTo(myLocationoverlay
+	                    .getMyLocation());
 			}
 			else {
 			}
-	            osmv.getController().animateTo(myLocationoverlay
-	                    .getMyLocation());
+			//osmv.getController().animateTo(new GeoPoint(51921700, 4481100));
+			osmv.getController().animateTo(new GeoPoint(40714200, -74006400));	
+
+
 	        }
 	    });
 		
