@@ -71,8 +71,8 @@ public class MapActivity extends Activity {
 			}
 			else {
 			}
-			//osmv.getController().animateTo(new GeoPoint(51921700, 4481100));
-			osmv.getController().animateTo(new GeoPoint(40714200, -74006400));	
+			osmv.getController().animateTo(new GeoPoint(51921700, 4481100));
+			//osmv.getController().animateTo(new GeoPoint(40714200, -74006400));	
 
 
 	        }
