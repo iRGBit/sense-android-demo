@@ -63,7 +63,8 @@
         
         <activity
             android:name=".SC_TabActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,16 +75,20 @@
         
         
         <!--  Sense Activity -->
-        <activity android:name=".SenseActivity" />
+        <activity android:name=".SenseActivity"
+        android:screenOrientation="portrait"     />
  
         <!--  Map Activity -->
-        <activity android:name=".MapActivity" />
+        <activity android:name=".MapActivity"  
+        android:screenOrientation="portrait"    />
  
         <!--  Info Activity -->
-        <activity android:name=".InfoActivity" />
+        <activity android:name=".InfoActivity"
+         android:screenOrientation="portrait"    />
         
         <!--  Graph View Activity -->
-        <activity android:name=".SC_GraphView" />
+        <activity android:name=".SC_GraphView" 
+         android:screenOrientation="portrait"   />
         
         
         <!-- COMPONENTS OF GENERIC SENSE PLATFORM -->
