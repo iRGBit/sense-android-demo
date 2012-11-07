@@ -1,9 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/icon"
-        android:icon="@drawable/soundcrowd_logo" />
-    <item android:id="@+id/text"
-        android:title="Text" />
-    <item android:id="@+id/icontext"
-        android:title="Icon and text"
-        android:icon="@drawable/soundcrowd_logo" />
+    <item android:id="@+id/centerlocation"
+        android:title="Go to Rotterdam Center"
+        android:icon="@drawable/soundcrowd_logo_36" />
+    <item android:id="@+id/mylocation"
+        android:title="Go to My Location"
+        android:icon="@drawable/soundcrowd_logo_36" />
+    <item android:id="@+id/legenda"
+        android:title="Legenda"
+        android:icon="@drawable/soundcrowd_logo_36" />
 </menu>

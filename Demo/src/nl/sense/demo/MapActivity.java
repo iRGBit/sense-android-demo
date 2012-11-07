@@ -17,10 +17,16 @@ import org.osmdroid.views.overlay.TilesOverlay;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Toast;
 
 /**
  *
@@ -33,6 +39,9 @@ public class MapActivity extends Activity {
 	// Constants
 	// ===========================================================
 	private MyLocationOverlay myLocationoverlay;
+	private GeoPoint Rotterdam = new GeoPoint(51921700, 4481100);
+	private MapController myMapController;
+
 	// ===========================================================
 	// Fields
 	// ===========================================================
@@ -44,17 +53,19 @@ public class MapActivity extends Activity {
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
 		// Setup base map
 		final RelativeLayout rl = new RelativeLayout(this);
 
 		CloudmadeUtil.retrieveCloudmadeKey(getApplicationContext());
 
 		final MapView osmv = new MapView(this, 256);
+		
+		myMapController = osmv.getController();  
+
 		rl.addView(osmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
-		//osmv.setBuiltInZoomControls(true);
-		//osmv.getController().setCenter(new GeoPoint(51921700, 4481100));	
+		osmv.setBuiltInZoomControls(true);
 		osmv.setMultiTouchControls(true);
 		
 	    myLocationoverlay = new MyLocationOverlay(this, osmv);
@@ -62,27 +73,24 @@ public class MapActivity extends Activity {
 	    myLocationoverlay.disableCompass();
 	    myLocationoverlay.enableFollowLocation();
 	    myLocationoverlay.setDrawAccuracyEnabled(true);
+	    
 	    myLocationoverlay.runOnFirstFix(new Runnable() {
 	    public void run() {
 			if (myLocationoverlay.getMyLocation() != null){	
-				// zoom to Rotterdam
-	            osmv.getController().animateTo(myLocationoverlay
+	            myMapController.animateTo(myLocationoverlay
 	                    .getMyLocation());
 			}
 			else {
 			}
-			osmv.getController().animateTo(new GeoPoint(51921700, 4481100));
-			//osmv.getController().animateTo(new GeoPoint(40714200, -74006400));	
-
+			// move to Rotterdam
+			myMapController.animateTo(Rotterdam);
 
 	        }
 	    });
-		
-		 
+				 
 		// zoom to 16
-		osmv.getController().setZoom(16);
+		myMapController.setZoom(16);
 
-		//osmv.getController().setCenter(new GeoPoint(51921700, 4481100));
 
 		// Add tiles layer with custom tile source
 		final MapTileProviderBasic tileProvider = new MapTileProviderBasic(getApplicationContext());
@@ -93,10 +101,6 @@ public class MapActivity extends Activity {
 		tilesOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
 		osmv.getOverlays().add(tilesOverlay);
 	    osmv.getOverlays().add(myLocationoverlay);	
-
-
-
-
 		
 		this.setContentView(rl);
 	}
@@ -106,8 +110,51 @@ public class MapActivity extends Activity {
         inflater.inflate(R.menu.menu, menu);
         return true;
     }	
+    
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.centerlocation:
+                centerLocation();
+                return true;
+            case R.id.legenda:
+                showLegenda();
+                return true;
+            case R.id.mylocation:
+                showMylocation();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
+	private void showMylocation() {
+		   myMapController.animateTo(myLocationoverlay.getMyLocation());
+		   Toast.makeText(this, "Moving to current location.", Toast.LENGTH_LONG).show();
+		
+	}
+
+	private void showLegenda() {
+		// TODO Add popup here
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toastlegenda,
+                                       (ViewGroup) findViewById(R.id.relativeLayout1));
+
+        Toast toast = new Toast(this);
+        toast.setView(view);
+        toast.show();
+		
+	}
+
+	private void centerLocation() {
+		   myMapController.animateTo(Rotterdam);
+		   Toast.makeText(this, "Show Rotterdam", Toast.LENGTH_LONG).show();
+		
+	}
+    
+    
 }
+
 
     
 

@@ -246,6 +246,7 @@ containing a value of this type.
         public static final int sc_logo_small=0x7f02001b;
         public static final int soundcrowd_banner=0x7f02001c;
         public static final int soundcrowd_logo=0x7f02001d;
+        public static final int soundcrowd_logo_36=0x7f02001e;
     }
     public static final class id {
         public static final int alignBounds=0x7f050002;
@@ -254,6 +255,7 @@ containing a value of this type.
         public static final int center=0x7f05000c;
         public static final int center_horizontal=0x7f05000a;
         public static final int center_vertical=0x7f050008;
+        public static final int centerlocation=0x7f050038;
         public static final int clip_horizontal=0x7f05000f;
         public static final int clip_vertical=0x7f05000e;
         public static final int credits=0x7f050015;
@@ -268,19 +270,22 @@ containing a value of this type.
         public static final int graph1=0x7f050012;
         public static final int graph2=0x7f050013;
         public static final int horizontal=0x7f050000;
-        public static final int icon=0x7f050032;
-        public static final int icontext=0x7f050034;
+        public static final int icon=0x7f050035;
+        public static final int icontext=0x7f050037;
         public static final int imageButton1=0x7f05001b;
         public static final int imageView1=0x7f05001c;
         public static final int imageView2=0x7f05001d;
         public static final int imageView3=0x7f05001a;
         public static final int label=0x7f050020;
         public static final int left=0x7f050006;
+        public static final int legenda=0x7f05003a;
         public static final int linearLayout1=0x7f050027;
         public static final int linearLayout2=0x7f050029;
         public static final int mapview=0x7f05001e;
         public static final int moddr=0x7f050016;
+        public static final int mylocation=0x7f050039;
         public static final int relLayout1=0x7f050026;
+        public static final int relativeLayout1=0x7f050032;
         public static final int right=0x7f050007;
         public static final int row=0x7f05001f;
         public static final int sclogoSplash=0x7f050028;
@@ -298,7 +303,9 @@ containing a value of this type.
         public static final int tab2=0x7f050024;
         public static final int tab3=0x7f050025;
         public static final int tabhost=0x7f050021;
-        public static final int text=0x7f050033;
+        public static final int text=0x7f050036;
+        public static final int textView1=0x7f050033;
+        public static final int textView2=0x7f050034;
         public static final int top=0x7f050004;
         public static final int vertical=0x7f050001;
     }
@@ -314,6 +321,7 @@ containing a value of this type.
         public static final int sense_layout=0x7f030008;
         public static final int tabgraphactivity=0x7f030009;
         public static final int tabspectrumactivity=0x7f03000a;
+        public static final int toastlegenda=0x7f03000b;
     }
     public static final class menu {
         public static final int activity_main=0x7f090000;
