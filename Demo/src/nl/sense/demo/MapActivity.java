@@ -15,7 +15,9 @@ import org.osmdroid.views.overlay.Overlay;
 import org.osmdroid.views.overlay.TilesOverlay;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -26,11 +28,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
+import nl.sense.demo.view.BoundedMapView;
 
 /**
  *
@@ -67,8 +74,8 @@ public class MapActivity extends Activity {
 		
 		myMapController = osmv.getController();  
 
-		rl.addView(osmv, new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.FILL_PARENT));
+		rl.addView(osmv, new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT));
 		osmv.setBuiltInZoomControls(true);
 		osmv.setMultiTouchControls(true);
 		
@@ -89,8 +96,6 @@ public class MapActivity extends Activity {
 			}
 	    }
 	    ); 
-				 
-
 
 		// Add tiles layer with custom tile source
 		final MapTileProviderBasic tileProvider = new MapTileProviderBasic(getApplicationContext());
@@ -102,6 +107,30 @@ public class MapActivity extends Activity {
 		osmv.getOverlays().add(tilesOverlay);
 	    osmv.getOverlays().add(myLocationoverlay);	
 		
+	    
+	    //TODO add image buttons
+	    ImageButton goto_location = new ImageButton(this);
+	    goto_location.setImageDrawable(null);
+	    goto_location.setOnClickListener(new OnClickListener()
+	    {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+                showMylocation();
+
+			}
+	    	
+	    });
+	    
+	    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(40, 40);
+	    params.rightMargin = 10;
+	    params.topMargin = 10;
+	    rl.addView(goto_location, params);
+	    
+	    
+
+	    
 		this.setContentView(rl);
 	}
  	
@@ -121,9 +150,6 @@ public class MapActivity extends Activity {
             case R.id.legenda:
                 showLegenda();
                 return true;
-            case R.id.mylocation:
-                showMylocation();
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -136,24 +162,9 @@ public class MapActivity extends Activity {
 	}
 
 	private void showLegenda() {
-		// TODO Add popup here
-     /*   LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toastlegenda,
-                                       (ViewGroup) findViewById(R.id.relativeLayout1));
-
-        Toast toast = new Toast(this);
-        toast.setView(view);
-        toast.show();*/
+		//TODO 
 		
-	    LayoutInflater inflater = (LayoutInflater)
-	    	       this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	    	    PopupWindow pw = new PopupWindow(
-	    	       inflater.inflate(R.layout.toastlegenda, null, false), 
-	    	       100, 
-	    	       100, 
-	    	       true);
-	    	    // The code below assumes that the root container has an id called 'main'
-	    	    pw.showAtLocation(this.findViewById(R.id.mapview), Gravity.CENTER, 0, 0);
+		
 		
 	}
 

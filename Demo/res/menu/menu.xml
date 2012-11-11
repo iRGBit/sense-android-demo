@@ -2,9 +2,6 @@
     <item android:id="@+id/centerlocation"
         android:title="Go to Rotterdam Center"
         android:icon="@drawable/soundcrowd_logo_36" />
-    <item android:id="@+id/mylocation"
-        android:title="Go to My Location"
-        android:icon="@drawable/soundcrowd_logo_36" />
     <item android:id="@+id/legenda"
         android:title="Legenda"
         android:icon="@drawable/soundcrowd_logo_36" />

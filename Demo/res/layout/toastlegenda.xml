@@ -10,7 +10,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView1" android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:text="PM is here"
+        android:text="Test"
         android:gravity="center"
         android:textColor="@android:color/black">
     </TextView>
@@ -28,7 +28,7 @@
         android:id="@+id/textView2"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:text="This is the demo of Custom Toast Notification"
+        android:text="Test 1,2, 1,2..."
         android:gravity="center"
         android:layout_below="@+id/imageView1"
         android:textColor="@android:color/black">
