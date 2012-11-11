@@ -21,6 +21,7 @@ import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -37,8 +38,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
-import nl.sense.demo.view.BoundedMapView;
-
 /**
  *
  * @author Alex van der Linden
@@ -52,6 +51,7 @@ public class MapActivity extends Activity {
 	private MyLocationOverlay myLocationoverlay;
 	private GeoPoint Rotterdam = new GeoPoint(51921700, 4481100);
 	private MapController myMapController;
+	private ImageView legendaview;
 	
 	// ===========================================================
 	// Fields
@@ -107,33 +107,99 @@ public class MapActivity extends Activity {
 		osmv.getOverlays().add(tilesOverlay);
 	    osmv.getOverlays().add(myLocationoverlay);	
 		
+	    //ADD IMAGE BUTTONS
+	    RelativeLayout.LayoutParams params;
 	    
-	    //TODO add image buttons
+	    //Go to GPS location
 	    ImageButton goto_location = new ImageButton(this);
-	    goto_location.setImageDrawable(null);
+	    int goto_id = 123;
+	    goto_location.setId(goto_id);
+	    goto_location.setBackgroundColor(Color.CYAN);
 	    goto_location.setOnClickListener(new OnClickListener()
 	    {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
                 showMylocation();
 
 			}
 	    	
 	    });
 	    
-	    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(40, 40);
-	    params.rightMargin = 10;
+	    params = new RelativeLayout.LayoutParams(40, 40);
+	    params.leftMargin = 10;
 	    params.topMargin = 10;
 	    rl.addView(goto_location, params);
 	    
 	    
+	    //Go to Rotterdam Center
+	    ImageButton goto_010 = new ImageButton(this);
+	    int goto010_id = 124;
+	    goto_010.setId(goto010_id);
+	    goto_010.setBackgroundColor(Color.BLUE);
+	    goto_010.setOnClickListener(new OnClickListener()
+	    {
 
+			@Override
+			public void onClick(View v) {
+                centerLocation();
+			}
+	    	
+	    });
 	    
+	    params = new RelativeLayout.LayoutParams(40, 40);
+	    params.topMargin = 10;
+	    params.leftMargin = 10;
+	    params.addRule(RelativeLayout.BELOW, goto_id);
+	    rl.addView(goto_010, params);
+	    
+	    //Show Legenda
+	    ImageButton show_legenda = new ImageButton(this);
+	    show_legenda.setBackgroundColor(Color.WHITE);
+	    show_legenda.setOnClickListener(new OnClickListener()
+	    {
+
+			@Override
+			public void onClick(View v) {
+				if(legendaview.getVisibility() == View.INVISIBLE)
+				 {
+				 legendaview.setVisibility(View.VISIBLE);
+				 } 
+				else if	(legendaview.getVisibility() == View.VISIBLE)
+				 {
+				 legendaview.setVisibility(View.INVISIBLE);
+				 }			
+				}
+	    	
+	    });
+	    
+	    params = new RelativeLayout.LayoutParams(40, 40);
+	    params.topMargin = 10;
+	    params.leftMargin = 10;
+	    params.addRule(RelativeLayout.BELOW, goto010_id);
+	    rl.addView(show_legenda, params);
+	    
+        //TODO Legenda 
+	    legendaview = new ImageView(this);
+	    params = new RelativeLayout.LayoutParams(200, 400);
+	    params.topMargin = 0;
+	    params.leftMargin = 30;
+	    params.addRule(RelativeLayout.RIGHT_OF, goto_id);
+	    legendaview.setImageResource(R.drawable.dcmr_legenda_bl);
+	    legendaview.setVisibility(View.INVISIBLE);
+	    rl.addView(legendaview, params);
+	    
+	    
+	    
+	    
+	    //make view
 		this.setContentView(rl);
 	}
  	
+	
+	
+	
+	
 	//add menu view
     public final boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -147,26 +213,20 @@ public class MapActivity extends Activity {
             case R.id.centerlocation:
                 centerLocation();
                 return true;
-            case R.id.legenda:
-                showLegenda();
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    
+    
+    
 	private void showMylocation() {
 		   myMapController.animateTo(myLocationoverlay.getMyLocation());
 		   Toast.makeText(this, "Jouw locatie", Toast.LENGTH_SHORT).show();
 		
 	}
 
-	private void showLegenda() {
-		//TODO 
-		
-		
-		
-	}
 
 	private void centerLocation() {
 		   myMapController.animateTo(Rotterdam);
