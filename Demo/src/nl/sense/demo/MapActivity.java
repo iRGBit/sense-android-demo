@@ -2,6 +2,7 @@ package nl.sense.demo;
 
 import java.util.List;
 
+
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.tilesource.ITileSource;
@@ -28,8 +29,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -100,7 +103,9 @@ public class MapActivity extends Activity {
 		// Add tiles layer with custom tile source
 		final MapTileProviderBasic tileProvider = new MapTileProviderBasic(getApplicationContext());
 		final ITileSource tileSource = new XYTileSource("NoiseTiles2012", null, 1, 16, 256, ".png",
-				"http://a.tiles.mapbox.com/v3/merglind.NoiseTiles2012/");		
+				"http://a.tiles.mapbox.com/v3/merglind.NoiseTiles2012/");
+		final ITileSource tileSource2 = new XYTileSource("tiles", null, 1, 16, 256, ".png",
+				"http://moddr.net/irgbit/tiles/");
 		tileProvider.setTileSource(tileSource);
 		final TilesOverlay tilesOverlay = new TilesOverlay(tileProvider, this.getBaseContext());
 		tilesOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
@@ -111,20 +116,27 @@ public class MapActivity extends Activity {
 	    RelativeLayout.LayoutParams params;
 	    
 	    //Go to GPS location
-	    ImageButton goto_location = new ImageButton(this);
+	    final ImageButton goto_location = new ImageButton(this);
 	    int goto_id = 123;
 	    goto_location.setId(goto_id);
 	    goto_location.setBackgroundColor(Color.CYAN);
-	    goto_location.setOnClickListener(new OnClickListener()
-	    {
+	    goto_location.setBackgroundResource(R.drawable.btn_location_off);
+	      
+	    goto_location.setOnTouchListener(new OnTouchListener(){
 
 			@Override
-			public void onClick(View v) {
-                showMylocation();
-
+			public boolean onTouch(View v, MotionEvent event) {
+		        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+				    goto_location.setBackgroundResource(R.drawable.btn_location_on);
+		        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+		        	showMylocation();
+				    goto_location.setBackgroundResource(R.drawable.btn_location_off);
+		        }
+				return false;
 			}
-	    	
-	    });
+	    }
+	    		);
+
 	    
 	    params = new RelativeLayout.LayoutParams(40, 40);
 	    params.leftMargin = 10;
@@ -133,19 +145,26 @@ public class MapActivity extends Activity {
 	    
 	    
 	    //Go to Rotterdam Center
-	    ImageButton goto_010 = new ImageButton(this);
+	    final ImageButton goto_010 = new ImageButton(this);
 	    int goto010_id = 124;
-	    goto_010.setId(goto010_id);
-	    goto_010.setBackgroundColor(Color.BLUE);
-	    goto_010.setOnClickListener(new OnClickListener()
-	    {
+	    goto_010.setId(goto010_id);	  
+	    goto_010.setBackgroundResource(R.drawable.btn_center_off);
+
+	    goto_010.setOnTouchListener(new OnTouchListener(){
 
 			@Override
-			public void onClick(View v) {
-                centerLocation();
+			public boolean onTouch(View v, MotionEvent event) {
+		        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+				    goto_010.setBackgroundResource(R.drawable.btn_center_on);
+		        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+		        	centerLocation();
+				    goto_010.setBackgroundResource(R.drawable.btn_center_off);
+		        }
+				return false;
 			}
-	    	
-	    });
+	    }
+	    		);
+
 	    
 	    params = new RelativeLayout.LayoutParams(40, 40);
 	    params.topMargin = 10;
@@ -185,7 +204,7 @@ public class MapActivity extends Activity {
 	    params.topMargin = 0;
 	    params.leftMargin = 30;
 	    params.addRule(RelativeLayout.RIGHT_OF, goto_id);
-	    legendaview.setImageResource(R.drawable.dcmr_legenda_bl);
+	    legendaview.setImageResource(R.drawable.legenda);
 	    legendaview.setVisibility(View.INVISIBLE);
 	    rl.addView(legendaview, params);
 	    
@@ -233,7 +252,7 @@ public class MapActivity extends Activity {
 		   Toast.makeText(this, "Rotterdam centrum", Toast.LENGTH_SHORT).show();
 		
 	}
-    
+		
 }
 
 

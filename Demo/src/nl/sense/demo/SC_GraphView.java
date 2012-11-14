@@ -47,12 +47,11 @@ public class SC_GraphView extends Activity {
 
 		// ----------
 		exampleSeries1 = new GraphViewSeries(new GraphViewData[] {
-				new GraphViewData(1, 2.0d)
-				, new GraphViewData(2, 1.5d)
-				, new GraphViewData(2.5, 3.0d) // another frequency
-				, new GraphViewData(3, 2.5d)
-				, new GraphViewData(4, 1.0d)
-				, new GraphViewData(5, 3.0d)
+				new GraphViewData(1, 1.0d)
+				, new GraphViewData(2, 2.0d)
+				, new GraphViewData(3, 3.0d)
+				, new GraphViewData(4, 4.0d)
+				, new GraphViewData(5, 5.0d)
 		});
 
 		// graph with custom labels and drawBackground
