@@ -173,9 +173,31 @@ public class MapActivity extends Activity {
 	    rl.addView(goto_010, params);
 	    
 	    //Show Legenda
-	    ImageButton show_legenda = new ImageButton(this);
-	    show_legenda.setBackgroundColor(Color.WHITE);
-	    show_legenda.setOnClickListener(new OnClickListener()
+	    final ImageButton show_legenda = new ImageButton(this);
+	    show_legenda.setBackgroundResource(R.drawable.btn_legenda_off);
+
+	    show_legenda.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+		        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+		        	show_legenda.setBackgroundResource(R.drawable.btn_legenda_on);
+		        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+					if(legendaview.getVisibility() == View.INVISIBLE)
+					 {
+					 legendaview.setVisibility(View.VISIBLE);
+					 } 
+					else if	(legendaview.getVisibility() == View.VISIBLE)
+					 {
+					 legendaview.setVisibility(View.INVISIBLE);
+					 }			        	
+					show_legenda.setBackgroundResource(R.drawable.btn_legenda_off);
+		        }
+				return false;
+			}
+		});
+	    
+/*	    show_legenda.setOnClickListener(new OnClickListener()
 	    {
 
 			@Override
@@ -190,7 +212,7 @@ public class MapActivity extends Activity {
 				 }			
 				}
 	    	
-	    });
+	    });*/
 	    
 	    params = new RelativeLayout.LayoutParams(40, 40);
 	    params.topMargin = 10;
