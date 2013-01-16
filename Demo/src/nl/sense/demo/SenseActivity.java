@@ -29,6 +29,7 @@ import nl.sense_os.service.constants.SensePrefs.Main.Ambience;
 import nl.sense_os.service.constants.SensePrefs.Main.Location;
 import nl.sense_os.service.constants.SensorData.DataPoint;
 import nl.sense_os.service.constants.SensorData.SensorNames;
+import nl.sense_os.service.constants.SensorData.SensorDescriptions;
 import nl.sense_os.service.commonsense.SenseApi;
 
 public class SenseActivity extends Activity implements ServiceConnection {
@@ -182,11 +183,17 @@ public class SenseActivity extends Activity implements ServiceConnection {
 			String noiseId = SenseApi.getSensorId(getApplicationContext(),
 					SensorNames.NOISE, SensorNames.NOISE, SenseDataTypes.FLOAT,
 					deviceUuid);
+			String noiseCalibratedId = SenseApi.getSensorId(getApplicationContext(),
+					SensorNames.NOISE, SensorDescriptions.AUTO_CALIBRATED, SenseDataTypes.FLOAT,
+					deviceUuid);
+
 			String positionId = SenseApi.getSensorId(getApplicationContext(),
 					SensorNames.LOCATION, SensorNames.LOCATION,
 					SenseDataTypes.JSON, deviceUuid);
 			if (noiseId != null)
 				SenseApi.shareSensor(this, noiseId, userId);
+			if (noiseCalibratedId != null)
+				SenseApi.shareSensor(this, noiseCalibratedId, userId);
 			if (positionId != null)
 				SenseApi.shareSensor(this, positionId, userId);
 

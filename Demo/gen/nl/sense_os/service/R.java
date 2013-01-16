@@ -52,46 +52,39 @@ public final class R {
     }
     public static final class id {
         public static final int button_click_me=0x7f08000e;
-        public static final int centerlocation=0x7f080028;
+        public static final int centerlocation=0x7f080021;
         public static final int credits=0x7f080003;
         public static final int credits2=0x7f080005;
         public static final int credits3=0x7f080007;
-        public static final int eulogoSplash=0x7f08001a;
-        public static final int fullLayout=0x7f08001b;
+        public static final int eulogoSplash=0x7f080013;
+        public static final int fullLayout=0x7f080014;
         public static final int graph1=0x7f080000;
         public static final int graph2=0x7f080001;
         public static final int home_container=0x7f08000c;
-        public static final int icon=0x7f080025;
-        public static final int icontext=0x7f080027;
+        public static final int icon=0x7f08001e;
+        public static final int icontext=0x7f080020;
         public static final int imageButton1=0x7f080009;
         public static final int imageView1=0x7f08000a;
         public static final int imageView2=0x7f08000b;
         public static final int imageView3=0x7f080008;
-        public static final int label=0x7f080010;
-        public static final int legenda=0x7f080029;
-        public static final int linearLayout1=0x7f080017;
-        public static final int linearLayout2=0x7f080019;
+        public static final int legenda=0x7f080022;
+        public static final int linearLayout1=0x7f080010;
+        public static final int linearLayout2=0x7f080012;
         public static final int moddr=0x7f080004;
-        public static final int relLayout1=0x7f080016;
-        public static final int relativeLayout1=0x7f080022;
-        public static final int row=0x7f08000f;
-        public static final int sclogoSplash=0x7f080018;
+        public static final int relLayout1=0x7f08000f;
+        public static final int relativeLayout1=0x7f08001b;
+        public static final int sclogoSplash=0x7f080011;
         public static final int scroll=0x7f080002;
         public static final int sense=0x7f080006;
-        public static final int spectrumView=0x7f080021;
-        public static final int splGraphView=0x7f080020;
-        public static final int splView=0x7f08001c;
-        public static final int statDistance=0x7f08001f;
-        public static final int statMinMaxAvg=0x7f08001e;
-        public static final int statTime=0x7f08001d;
-        public static final int tab0=0x7f080012;
-        public static final int tab1=0x7f080013;
-        public static final int tab2=0x7f080014;
-        public static final int tab3=0x7f080015;
-        public static final int tabhost=0x7f080011;
-        public static final int text=0x7f080026;
-        public static final int textView1=0x7f080023;
-        public static final int textView2=0x7f080024;
+        public static final int spectrumView=0x7f08001a;
+        public static final int splGraphView=0x7f080019;
+        public static final int splView=0x7f080015;
+        public static final int statDistance=0x7f080018;
+        public static final int statMinMaxAvg=0x7f080017;
+        public static final int statTime=0x7f080016;
+        public static final int text=0x7f08001f;
+        public static final int textView1=0x7f08001c;
+        public static final int textView2=0x7f08001d;
         public static final int transparent_panel=0x7f08000d;
     }
     public static final class layout {
@@ -101,13 +94,11 @@ public final class R {
         public static final int main=0x7f030003;
         public static final int map_layout=0x7f030004;
         public static final int map_legenda=0x7f030005;
-        public static final int pq_list_row=0x7f030006;
-        public static final int pq_main=0x7f030007;
-        public static final int sc_splash=0x7f030008;
-        public static final int sense_layout=0x7f030009;
-        public static final int tabgraphactivity=0x7f03000a;
-        public static final int tabspectrumactivity=0x7f03000b;
-        public static final int toastlegenda=0x7f03000c;
+        public static final int sc_splash=0x7f030006;
+        public static final int sense_layout=0x7f030007;
+        public static final int tabgraphactivity=0x7f030008;
+        public static final int tabspectrumactivity=0x7f030009;
+        public static final int toastlegenda=0x7f03000a;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
