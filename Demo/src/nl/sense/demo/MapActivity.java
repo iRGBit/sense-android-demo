@@ -100,16 +100,24 @@ public class MapActivity extends Activity {
 	    }
 	    ); 
 
-		// Add tiles layer with custom tile source
+		// Add tiles layer DCMR
 		final MapTileProviderBasic tileProvider = new MapTileProviderBasic(getApplicationContext());
 		final ITileSource tileSource = new XYTileSource("NoiseTiles2012", null, 1, 16, 256, ".png",
 				"http://a.tiles.mapbox.com/v3/merglind.NoiseTiles2012/");
-		final ITileSource tileSource2 = new XYTileSource("tiles", null, 1, 16, 256, ".png",
-				"http://moddr.net/irgbit/tiles/");
 		tileProvider.setTileSource(tileSource);
 		final TilesOverlay tilesOverlay = new TilesOverlay(tileProvider, this.getBaseContext());
 		tilesOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
+		
+		// Add tiles layer Soundcrowd
+		final MapTileProviderBasic anotherTileProvider = new MapTileProviderBasic(getApplicationContext());
+		final ITileSource anotherTileSource = new XYTileSource("FietsRegionaal", null, 1, 16, 256, ".png",
+		        "https://tiles.mapbox.com/v3/occupy.occupy-global-lines/");
+		anotherTileProvider.setTileSource(anotherTileSource);
+		final TilesOverlay secondTilesOverlay = new TilesOverlay(anotherTileProvider, this.getBaseContext());
+		secondTilesOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
+		
 		osmv.getOverlays().add(tilesOverlay);
+		osmv.getOverlays().add(secondTilesOverlay);
 	    osmv.getOverlays().add(myLocationoverlay);	
 		
 	    //ADD IMAGE BUTTONS

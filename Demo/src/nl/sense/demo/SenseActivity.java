@@ -137,7 +137,7 @@ public class SenseActivity extends Activity implements ServiceConnection {
 		Log.v(TAG, "setupSense()");
 		try {
 			ISenseService service = sensePlatform.getService();
-			sensePlatform.login("foo", "bar", callback);
+			sensePlatform.login("irgbit", "soundcrowd", callback);
 
 			//turn off specific sensors
 			service.setPrefBool(Ambience.LIGHT, false);
