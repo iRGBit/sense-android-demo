@@ -3,6 +3,7 @@ package nl.sense.demo;
 import java.util.List;
 
 
+import org.osmdroid.tileprovider.tilesource.SC_XYTilesource;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.tilesource.ITileSource;
@@ -110,14 +111,14 @@ public class MapActivity extends Activity {
 		
 		// Add tiles layer Soundcrowd
 		final MapTileProviderBasic anotherTileProvider = new MapTileProviderBasic(getApplicationContext());
-		final ITileSource anotherTileSource = new XYTileSource("FietsRegionaal", null, 1, 16, 256, ".png",
-		        "https://tiles.mapbox.com/v3/occupy.occupy-global-lines/");
+		final SC_XYTilesource anotherTileSource = new SC_XYTilesource("Soundcrowd", null, 1, 16, 256, ".png",
+		        "http://developer.sense-os.nl:8080/get_tile.php");
 		anotherTileProvider.setTileSource(anotherTileSource);
 		final TilesOverlay secondTilesOverlay = new TilesOverlay(anotherTileProvider, this.getBaseContext());
 		secondTilesOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
 		
-		osmv.getOverlays().add(tilesOverlay);
-		osmv.getOverlays().add(secondTilesOverlay);
+		osmv.getOverlays().add(secondTilesOverlay); //SoundCrowd
+		osmv.getOverlays().add(tilesOverlay); //DCMR
 	    osmv.getOverlays().add(myLocationoverlay);	
 		
 	    //ADD IMAGE BUTTONS
