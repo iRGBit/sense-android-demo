@@ -273,6 +273,7 @@ public class MapActivity extends Activity {
     
 	private void showMylocation() {
 		   myMapController.animateTo(myLocationoverlay.getMyLocation());
+		   myMapController.setZoom(14);    
 		   Toast.makeText(this, "Jouw locatie", Toast.LENGTH_SHORT).show();
 		
 	}
@@ -280,6 +281,7 @@ public class MapActivity extends Activity {
 
 	private void centerLocation() {
 		   myMapController.animateTo(Rotterdam);
+		   myMapController.setZoom(14);    
 		   Toast.makeText(this, "Rotterdam centrum", Toast.LENGTH_SHORT).show();
 		
 	}
